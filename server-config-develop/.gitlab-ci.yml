@@ -1,0 +1,38 @@
+include:
+  project: 'flat-renta/repositories_for_cicd'
+  ref: develop
+  file: 
+    - /start_files_for_build_maven-ci.yml
+    - /one_build_application-ci.yml
+    - /build_docker_image-ci.yml
+    # # - /push_in_cluster-ci.yml
+    # - /deploy-ci.yml
+
+    # - /test_application-ci.yml
+
+
+
+variables: 
+  PROJECT_DIRECTORY: "./config-server"
+  NAME_SERVICE: "server-config"
+  PROJECT_DIRECTORY_FOR_BUILD: "server-config"
+  NAME_OF_SERVICE: "config-server"
+  APPLICATION_VERSION: 0.0.1-SNAPSHOT
+  DEPLOYMENT_NAME: "api-gateway"
+  PATH_ON_HELM: "/home/minikube/helm2/api-gateway"
+  HELM_SERVICE: "api-gateway"
+
+build_application:
+  extends: .one_build_application
+  after_script:
+    - ls && pwd
+    - ls /builds/flat-renta/server-config/.m2/repository/dev/madela/
+
+build_docker_image:
+  extends: .build_docker_image
+  needs:
+    - build_application
+
+# deploy:
+#   extends: .deploy
+

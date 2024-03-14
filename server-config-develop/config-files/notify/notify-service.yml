@@ -1,0 +1,56 @@
+server:
+  port: ${APP_PORT:8080}
+  servlet:
+    context-path: "/notify"
+
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.91:5433/notify_db
+    username: user
+    password: 12345
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+openapi:
+  title: notify-mcs
+  description:
+
+rabbitmq:
+  exchange:
+    main: msg_exchange
+    dead-letter: dl_exchange
+    parking-lot: pl_exchange
+  queue:
+    main: msg_queue
+    dead-letter: dl_queue
+    parking-lot: pl_queue
+  key:
+    main: msg_key
+    dead-letter: dead-email-message
+
+application:
+  urls:
+    action-url: http://localhost:8083
+    verify-email-url: https://flat-renta.test.madela.dev/renta/verify-email?key=
+    update-password-url: https://flat-renta.test.madela.dev/renta/update-password?key=
+    account-recovery-url: https://flat-renta.test.madela.dev/renta/account-recovery?key=
+  mail:
+    subject: Flat-renta notification
+    host: mail.hosting.reg.ru
+    port: 587
+    username: flat-renta.test@madela.dev
+    password: uU0sC0pH6g
+    properties.mail:
+      transport.protocol: smtp
+      smtp:
+        auth: true
+        debug: true
+        starttls.enable: true
+
+logging:
+  level:
+    root: info
+    org.springframework.web.HttpLogging: info

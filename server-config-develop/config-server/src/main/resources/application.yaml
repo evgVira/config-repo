@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@gitlab.madela.dev:flat-renta/server-config.git
+          search-paths:
+            - config-files/user/
+            - config-files/gateway/
+            - config-files/notify/
+            - config-files/camunda/
+            - config-files/chat-hub/
+            - config-files/flat/
+            - config-files/file-box/
+            - config-files/deal/
+            - config-files/e-lock/
+          default-label: develop
+server:
+  port: 8888
