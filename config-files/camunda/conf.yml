@@ -1,3 +1,35 @@
+spring:
+  profiles:
+    active: local
+
+#local config
+---
+spring:
+  profiles: local
+
+  datasource:
+    username: ${DB_USER:camunda}
+    password: ${DB_PASSWORD:camunda}
+    url: ${DB_URL:jdbc:postgresql://127.0.0.44:5432/camunda}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    databasePlatform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+keycloak:
+  credentials:
+    secret: soAhQnGQfsaj79rbeOegLk2aRwfnSpua
+  resource: camunda-service
+  url:
+    token-url: https://flat-renta.test.madela.dev/auth/realms/users-realm/protocol/openid-connect/token
+
+#prod config
+---
+spring:
+  profiles: prod
 server:
   port: ${APP_PORT:8088}
   servlet:
@@ -37,7 +69,6 @@ camunda:
     database:
       type: postgres
 
-spring:
   main:
     allow-bean-definition-overriding: true
   datasource:
@@ -58,5 +89,6 @@ logging:
     org.springframework.web.HttpLogging: TRACE
   pattern:
     console: "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger{36}] - %msg%n"
+
 
 
