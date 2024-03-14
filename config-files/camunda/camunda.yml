@@ -1,3 +1,5 @@
+spring:
+  profiles: prod
 server:
   port: ${APP_PORT:8088}
   servlet:
@@ -37,7 +39,7 @@ camunda:
     database:
       type: postgres
 
-spring:
+#spring:
   main:
     allow-bean-definition-overriding: true
   datasource:
