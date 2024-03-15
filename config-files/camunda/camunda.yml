@@ -59,29 +59,4 @@ logging:
   pattern:
     console: "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger{36}] - %msg%n"
 
-#local configuration
----
-spring:
-  profiles:
-    name: camunda-local
-    implements: conf
-
-  datasource:
-    username: ${DB_USER:camunda}
-    password: ${DB_PASSWORD:camunda}
-    url: ${DB_URL:jdbc:postgresql://127.0.0.44:5432/camunda}
-    driver-class-name: org.postgresql.Driver
-
-  jpa:
-    databasePlatform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
-    hibernate:
-      ddl-auto: validate
-
-keycloak:
-  credentials:
-    secret: soAhQnGQfsaj79rbeOegLk2aRwfnSpua
-  resource: camunda-service
-  url:
-    token-url: https://flat-renta.test.madela.dev/auth/realms/users-realm/protocol/openid-connect/token
 
