@@ -1,5 +1,5 @@
 spring:
-  profiles: dev
+  profiles: same
 application:
   camunda:
     key: booking-process
