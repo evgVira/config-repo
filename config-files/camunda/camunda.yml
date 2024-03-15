@@ -1,7 +1,7 @@
-spring:
-  profiles:
-    active: camunda-local
-#    active: camunda
+#spring:
+#  profiles:
+#    active: camunda-local
+##    active: camunda
 ---
 spring:
   profiles:
