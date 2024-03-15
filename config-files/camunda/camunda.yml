@@ -62,7 +62,7 @@ logging:
 ---
 spring:
   profiles:
-    name: local
+    name: camunda-local
 
   datasource:
     username: ${DB_USER:camunda}
