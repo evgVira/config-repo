@@ -82,3 +82,24 @@ keycloak:
   resource: camunda-service
   url:
     token-url: https://flat-renta.test.madela.dev/auth/realms/users-realm/protocol/openid-connect/token
+
+    #!!!!!!!!!!!!!
+    application:
+      camunda:
+        key: booking-process
+      url:
+        deal:
+          #      base-url: https://flat-renta.test.madela.dev/api-gateway/deal-service
+          base-url: https://flat-renta.test.madela.dev/api-gateway/deal-service
+        flat:
+          base-url: https://flat-renta.test.madela.dev/api-gateway/flat-service
+
+    server:
+      port: ${APP_PORT:8088}
+      servlet:
+        context-path: "/camunda"
+
+    openapi:
+      title: camunda-mcs
+      description: Документация camunda-mcs API
+    #!!!!!!!!!!!!!!!!
