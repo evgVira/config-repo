@@ -1,6 +1,6 @@
 spring:
   profiles:
-    include: dev
+    include: same
   datasource:
     username: ${DB_USER:camunda}
     password: ${DB_PASSWORD:camunda}
